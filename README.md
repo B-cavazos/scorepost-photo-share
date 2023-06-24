@@ -4,21 +4,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ScorePost is a photo-sharing app designed exclusively for gamers, providing a platform to showcase their gaming accomplishments and high scores. Similar to Instagram, this app allows video game players to upload and share pictures of their achievements, remarkable game play moments, and notable scores with the gaming community.
 
 ## Key Features
-Upload and Share: Seamlessly upload and share your gaming photos, capturing your triumphs and milestones in the virtual world.
+**Upload and Share:** Seamlessly upload and share your gaming photos, capturing your triumphs and milestones in the virtual world.
 
-### Community Interaction:
+**Community Interaction:**
 Engage with a vibrant community of gamers by liking, commenting on, and sharing their gaming photos, fostering connections and encouraging friendly competition.
 
-### Achievement Highlights:
+**Achievement Highlights:**
 Spotlight your notable achievements, impressive scores, and favorite game play moments, inspiring others and receiving recognition for your skills.
 
-### User Profiles:
+**User Profiles:**
 Customize your gamer profile, showcasing your gaming preferences, favorite genres, and achievements to establish your gaming identity.
 
-### Discover and Explore:
+**Discover and Explore:**
 Discover trending gaming photos, explore different game categories, and connect with like-minded gamers, expanding your gaming horizons and discovering new gaming experiences.
 
-### Tech Stack
+## Tech Stack
 - NextJS
 - ReactJS
 - TailwindCSS
