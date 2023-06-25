@@ -10,6 +10,14 @@ export const authOptions = {
         }),
         // ...add more providers here
     ],
+
+    //theme object to customize default login screen
+    theme: {
+        logo:"https://links.papareact.com/sq0",
+        brandColor:"#f13287",
+        colorScheme:"Auto",
+    }
+    //pages obj is an option for fully customized sign in page
 }
 
 export default NextAuth(authOptions)
