@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main
-      className={` ${inter.className}`}
+      className={` ${inter.className}, overflow-y-scroll scrollbar-hide`}
     >
       <Head>
         <title>ScorePost</title>
