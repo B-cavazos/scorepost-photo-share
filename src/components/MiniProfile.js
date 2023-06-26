@@ -1,3 +1,4 @@
+import { signOut } from 'next-auth/react'
 import React from 'react'
 
 function MiniProfile() {
@@ -8,7 +9,7 @@ function MiniProfile() {
                 <h2 className='font-bold'>USER NAME</h2>
                 <h3 className='text-sm text-gray-400'>Welcome to ScorePost</h3>
             </div>
-            <button className='text-blue-400 text-small font-semibold'>Sign Out</button>
+            <button className='text-blue-400 text-small font-semibold' onClick={()=>signOut()}>Sign Out</button>
         </div>
     )
 }
