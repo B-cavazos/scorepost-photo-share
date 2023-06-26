@@ -6,11 +6,14 @@ import{
   HeartIcon,
   PaperAirplaneIcon,
   Bars3Icon,
-  PlusCircleIcon, //MenuIcon,
+  PlusCircleIcon,
 } from "@heroicons/react/24/outline"
 import {HomeIcon} from "@heroicons/react/24/solid"
+import { signIn, useSession } from 'next-auth/react'
 
 function Header() {
+  const {data: session} = useSession();
+  console.log("session: ",session);
   return (
     <div className='shadow-sm border-b bg-white sticky top-0 z-50'>
         <div className='flex items-center justify-between max-w-6xl mx-5 lg:mx-auto'>
@@ -42,7 +45,9 @@ function Header() {
           <UserGroupIcon className='navBtn'/>
           <HeartIcon className='navBtn'/>
 
-            <img src="https://links.papareact.com/3ke" alt="profile picture" className='h-10 rounded-full cursor-pointer'/>
+            <button onClick={()=>{
+              signIn(); //temp sign in link
+            }}><img src="https://links.papareact.com/3ke" alt="profile picture" className='h-10 rounded-full cursor-pointer'/></button>
         </div>
         </div>
     </div>
