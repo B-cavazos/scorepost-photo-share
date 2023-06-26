@@ -46,7 +46,7 @@ function Header() {
               <PlusCircleIcon className='navBtn'/>
               <UserGroupIcon className='navBtn'/>
               <HeartIcon className='navBtn'/>
-                <img src={session?.user?.image} alt="profile picture"  className='h-10 rounded-full cursor-pointer'/>
+                <img src={session?.user?.image} alt="profile picture"  className='h-10 w-10 rounded-full cursor-pointer'/>
             </>
           )
           :(<button onClick={()=>signIn()}>Sign In</button>)

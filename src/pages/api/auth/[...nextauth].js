@@ -16,6 +16,13 @@ export const authOptions = {
         logo:"https://links.papareact.com/sq0",
         brandColor:"#f13287",
         colorScheme:"Auto",
+    },
+    callbacks:{
+        async session({session, token, user}){
+            session.user.username = session.user.name.split(' ').join('').toLocaleLowerCase();
+            session.user.uid = token.sub;
+            return session;
+        }
     }
     //pages obj is an option for fully customized sign in page
 }
