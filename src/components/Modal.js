@@ -1,18 +1,51 @@
 import React, { Fragment, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { Snapshot, useRecoilState } from 'recoil'
 import { modalState } from '../../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react';
 import { CameraIcon } from '@heroicons/react/24/outline';
+import {db, storage} from "../../firebase"
+import { addDoc, collection, serverTimestamp, updateDoc, doc } from 'firebase/firestore';
+import { useSession } from 'next-auth/react';
+import { ref, getDownloadURL, uploadString } from 'firebase/storage';
 
 function Modal() {
     const [open, setOpen] = useRecoilState(modalState);
     const [selectedFile, setSelectedFile] = useState(null); //state does not update with a new photo after the old one has been removed
     const filePickerRef = useRef(null);
     const captionRef = useRef(null);
+    const {data: session} = useSession();
+    const [loading, setLoading] = useState(false);
 
-    const uploadPost = () => {};
+    const uploadPost = async () => {
+        if(loading) return;
 
-    const addImageToPost = (e) => {
+        setLoading(true);
+
+        // 1) Create a post and add to the firebase 'posts' collection
+        const docRef = await addDoc(collection(db, 'posts'),{
+            username: session.user.username,
+            caption: captionRef.current.value,
+            profileImg: session.user.image,
+            timestamp: serverTimestamp(),
+        })
+
+        // 2) Get the post ID for the newly created post - is this from fb collection?
+        console.log("New doc added w ID", docRef.id);
+
+        // 3) Upload the image to fb storage with the post ID
+        const imageRef = ref(storage, `posts/${docRef.id}/image`); //ref to fb storage
+        await uploadString(imageRef, selectedFile, "data_url").then(async Snapshot => {
+            const downloadURL = await getDownloadURL(imageRef);
+            // 4) Get a download URL from fb storage and update the original post with image.
+            await updateDoc(doc(db, 'posts', docRef.id),{image: downloadURL}); //err handling?
+        });
+
+        setOpen(false);
+        setLoading(false);
+        setSelectedFile(null);
+    };
+
+    const addImageToPost = (e) => { //need to restrict to img/vid filetypes only
         const reader = new FileReader();
         if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]);
@@ -105,11 +138,11 @@ function Modal() {
                                 <div className='mt-5 sm:mt-6'>
                                     <button
                                     type="button"
-                                    //disabled={!selectedFile}
+                                    disabled={!selectedFile}
                                     className='inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-500 sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300'
-                                    //onClick={uploadPost}
+                                    onClick={uploadPost}
                                     >
-                                        Upload Post
+                                        {loading?"Uploading":"Upload Post"}
                                     </button>
                                 </div>
                             </div>
