@@ -29,7 +29,7 @@ function Modal() {
             timestamp: serverTimestamp(),
         })
 
-        // 2) Get the post ID for the newly created post - is this from fb collection?
+        // 2) Get the post ID for the newly created post
         console.log("New doc added w ID", docRef.id);
 
         // 3) Upload the image to fb storage with the post ID

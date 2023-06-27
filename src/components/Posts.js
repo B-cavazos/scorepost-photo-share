@@ -1,30 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Post from './Post'
+import { db } from '../../firebase';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 
 function Posts() {
-    const posts = [
-        {
-            id:'123',
-            username:'binnyB',
-            userImg:'https://links.papareact.com/3ke',
-            img:'https://links.papareact.com/3ke',
-            caption: 'this is dope.'
-        },
-        {
-            id:'123',
-            username:'binnyB',
-            userImg:'https://links.papareact.com/3ke',
-            img:'https://links.papareact.com/3ke',
-            caption: 'this is dope.'
-        },
-        {
-            id:'123',
-            username:'binnyB',
-            userImg:'https://links.papareact.com/3ke',
-            img:'https://links.papareact.com/3ke',
-            caption: 'this is dope.'
-        },
-    ];
+        const [posts, setPosts] = useState([]);
+
+        useEffect( ()=>
+            onSnapshot(
+                query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+                (snapshot) => {
+                setPosts(snapshot.docs);
+                }
+            ),
+        [db]); //image links are currently broken
+
     return (
     <div>
         { posts.map(post=>
@@ -32,9 +22,9 @@ function Posts() {
             key={post.id}
             id={post.id}
             img={post.img}
-            username={post.username}
-            userImg={post.userImg}
-            caption={post.caption}
+            username={post.data().username}
+            userImg={post.data().profileImg}
+            caption={post.data().caption}
         />)
         )}
     </div>
