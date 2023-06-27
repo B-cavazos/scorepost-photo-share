@@ -34,7 +34,7 @@ function Modal() {
 
         // 3) Upload the image to fb storage with the post ID
         const imageRef = ref(storage, `posts/${docRef.id}/image`); //ref to fb storage
-        await uploadString(imageRef, selectedFile, "data_url").then(async Snapshot => {
+        await uploadString(imageRef, selectedFile, "data_url").then(async (snapshot) => {
             const downloadURL = await getDownloadURL(imageRef);
             // 4) Get a download URL from fb storage and update the original post with image.
             await updateDoc(doc(db, 'posts', docRef.id),{image: downloadURL}); //err handling?

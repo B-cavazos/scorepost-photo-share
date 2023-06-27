@@ -5,7 +5,6 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 
 function Posts() {
         const [posts, setPosts] = useState([]);
-
         useEffect( ()=>
             onSnapshot(
                 query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
@@ -21,7 +20,7 @@ function Posts() {
             (<Post
             key={post.id}
             id={post.id}
-            img={post.img}
+            img={post.data().image}
             username={post.data().username}
             userImg={post.data().profileImg}
             caption={post.data().caption}
