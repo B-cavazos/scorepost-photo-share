@@ -15,6 +15,8 @@ module.exports = {
       'sp-gray': '#868b94',
       'sp-pink': '#fa61b0',
       'sp-white-off': '#eef4fb',
+      'white':"#ffffff",
+      'black':"000000"
     },
     extend: {
       backgroundImage: {
