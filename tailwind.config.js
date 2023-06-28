@@ -6,11 +6,26 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      'sp-blue': '#2e74ff',
+      'sp-blue-dark':'#0e1928',
+      'sp-blue-light':'#bbdeff',
+      'sp-blue-rich':'#084fb2',
+      'sp-carbon': '#060a11',
+      'sp-gray': '#868b94',
+      'sp-pink': '#fa61b0',
+      'sp-white-off': '#eef4fb',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      fontFamily: {
+        sans: ['lexend','Libre\\ Franklin' ,'sans-serif'],
+        //serif: ['Merriweather', 'serif'],
+        display: ['Aldrich', 'sans-serif'],
       },
     },
   },
