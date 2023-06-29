@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 14, 25, 40;
+  --background-start-rgb: 238, 244, 251;
+  --background-end-rgb: 222, 222, 222;
 }
 
 /* dark theme - est. by computer */
@@ -16,6 +16,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 } */
+
+@layer base {
+}
 
 @layer components{
   .navBtn{
