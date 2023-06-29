@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState } from 'react'
-import { Snapshot, useRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { modalState } from '../../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react';
 import { CameraIcon } from '@heroicons/react/24/outline';
@@ -101,10 +101,10 @@ function Modal() {
                                 ):(
                                     <div
                                         onClick={ ()=> filePickerRef.current.click() }
-                                        className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 cursor-pointer'
+                                        className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-pink-100 cursor-pointer'
                                     >
                                     <CameraIcon
-                                        className='h-6 w-6 text-red-600'
+                                        className='h-6 w-6 text-sp-pink'
                                         aria-hidden="true"
                                         />
                                     </div>
@@ -113,7 +113,7 @@ function Modal() {
                                     <div className='mt-3 text-center sm:mt-5'>
                                         <Dialog.Title
                                             as='h3'
-                                            className="text-lg leading-6 font-medium text-gray-900"
+                                            className="text-lg leading-6 font-medium text-sp-blue-dark"
                                         >
                                             Upload a Photo
                                         </Dialog.Title>
@@ -139,7 +139,7 @@ function Modal() {
                                     <button
                                     type="button"
                                     disabled={!selectedFile}
-                                    className='inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-500 sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300'
+                                    className='inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sp-blue text-base font-medium text-white hover:bg-sp-pink focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-sp-pink sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300'
                                     onClick={uploadPost}
                                     >
                                         {loading?"Uploading":"Upload Post"}

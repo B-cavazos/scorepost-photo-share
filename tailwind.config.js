@@ -6,28 +6,22 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },    colors: {
-      'sp-blue': '#2e74ff',
-      'sp-blue-dark':'#0e1928',
-      'sp-blue-light':'#bbdeff',
-      'sp-blue-rich':'#084fb2',
-      'sp-carbon': '#060a11',
-      'sp-gray': '#868b94',
-      'sp-pink': '#fa61b0',
-      'sp-white-off': '#eef4fb',
-      'white':"#ffffff",
-      'black':"000000"
-    },
-      fontFamily: {
-        sans: ['lexend','Libre\\ Franklin' ,'sans-serif'],
-        //serif: ['Merriweather', 'serif'],
-        display: ['Aldrich', 'sans-serif'],
+        },    colors: {
+        'sp-blue': '#2e74ff',
+        'sp-blue-dark':'#0e1928',
+        'sp-blue-light':'#bbdeff',
+        'sp-blue-rich':'#084fb2',
+        'sp-carbon': '#060a11',
+        'sp-gray': '#868b94',
+        'sp-pink': '#fa61b0',
+        'sp-white-off': '#eef4fb',
+        'white':"#ffffff",
+        'black':"000000"
       },
     },
   },

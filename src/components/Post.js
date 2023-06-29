@@ -6,12 +6,16 @@ import {
     FaceSmileIcon,
     HeartIcon,
     PaperAirplaneIcon
-} from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline';
+import { Aldrich, Lexend } from 'next/font/google';
 import {HeartIcon as HeartIconFilled} from '@heroicons/react/24/solid'
 import { useSession } from 'next-auth/react';
 import { addDoc, deleteDoc, collection, doc, onSnapshot, orderBy, query, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import Moment from 'react-moment';
+
+const aldrich = Aldrich({ subsets: ['latin'], weight: '400', });
+const lexend = Lexend({ subsets: ['latin'], weight: ['400','700'], });
 
 function Post({id, username, userImg, img, caption}) {
     const {data: session} = useSession();
@@ -70,21 +74,21 @@ function Post({id, username, userImg, img, caption}) {
     }
 
     return (
-    <div className='bg-white my-7 border rounded-sm'>
+    <div className='my-7 rounded-sm border-t-2'>
         {/* Header */}
         <div className='flex items-center p-5'>
-            <img src={userImg} className="rounded-full  h-12 w-12 object-contain border p-1 mr-3" alt={`${username}'s avatar`}/>
-            <p className='flex-1 font-bold'>{username}</p>
+            <img src={userImg} className="rounded-full h-12 w-12 object-contain p-1 mr-3" alt={`${username}'s avatar`}/>
+            <p className={`flex-1 ${aldrich.className}`}>{username}</p>
             <EllipsisHorizontalIcon className='h-5'/>
         </div>
         {/* IMG */}
         <img src={img} className='object-cover w-full' alt={`${username}'s post number ${id}`}/>
         {/* BUTTONS */}
         {session && (
-            <div className='flex justify-between px=4 pt-4'>
+            <div className='flex justify-between px-4 pt-4'>
                 <div className='flex space-x-4'>
                     {hasLiked ? (
-                            <HeartIconFilled className='btn text-red-500' onClick={likePost}/>
+                            <HeartIconFilled className='btn text-sp-pink' onClick={likePost}/>
                         ):(
                             <HeartIcon className='btn' onClick={likePost}/>
                         )}
@@ -95,7 +99,7 @@ function Post({id, username, userImg, img, caption}) {
             </div>
         )}
         {/* CAPTION */}
-        <p className='p-5 truncate'>
+        <p className={`p-5 truncate ${lexend.className}`}>
             {likes.length > 0 && (
                 <p className='font-bold mr-1'>{likes.length} likes</p>
             )}
@@ -108,7 +112,7 @@ function Post({id, username, userImg, img, caption}) {
                 {comments.map(comment=>(
                     <div key={comment.id} className='flex items-center space-x-2 mb-3'>
                         <img src={comment.data().userImage} className='h-7 rounded-full'/>
-                        <p className='text-sm flex-1'>
+                        <p className={`text-sm flex-1 ${lexend.className}`}>
                             <span className='font-bold'>{comment.data().username}</span>{" "}
                             {comment.data().comment}
                         </p>
@@ -125,7 +129,7 @@ function Post({id, username, userImg, img, caption}) {
                 <FaceSmileIcon className='h-7 w-7'/>
                 <input
                     type='text'
-                    className='border-none flex-1 focus:ring-0 outline-none'
+                    className='border-none flex-1 mx-5 bg-sp-white-off focus:ring-0 outline-none'
                     placeholder='Add a comment...'
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
@@ -134,7 +138,7 @@ function Post({id, username, userImg, img, caption}) {
                     type='submit'
                     disabled={!comment.trim()}
                     onClick={sendComment}
-                    className='font-semibold text-blue-400'
+                    className='font-semibold text-sp-blue '
                 >
                     Post
                 </button>
