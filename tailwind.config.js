@@ -16,6 +16,7 @@ module.exports = {
         'sp-blue-dark':'#0e1928',
         'sp-blue-light':'#bbdeff',
         'sp-blue-rich':'#084fb2',
+        'sp-blue-lightMode': '#4e87f9',
         'sp-carbon': '#060a11',
         'sp-gray': '#868b94',
         'sp-pink': '#fa61b0',

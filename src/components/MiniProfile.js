@@ -14,7 +14,7 @@ function MiniProfile() {
                 <h2 className={`${aldrich.className}`}>{session?.user?.name}</h2>
                 <h3 className='text-sm text-gray-400'>Welcome to ScorePost</h3>
             </div>
-            <button className='text-sp-blue text-small font-semibold' onClick={()=>signOut()}>Sign Out</button>
+            <button className='text-sp-blue text-small font-semibold dark:text-sp-blue-lightMode' onClick={()=>signOut()}>Sign Out</button>
         </div>
     )
 }
